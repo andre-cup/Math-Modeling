@@ -23,20 +23,21 @@ while t <= 16:
     Kn11 = t + fx + fxy
     Kn21 = t + gx + gxy
 
-    Kn12 = (t + h/2 ) + fxH * Kn11
-    Kn22 = (t + h/2) +gxH * Kn11
+    Kn12 = (t + h/2) + fxH * Kn11
+    Kn22 = (t + h/2) + gxH * Kn11
 
-    Kn13 = (t + h/2 ) + fxH * Kn12
-    Kn23 = (t + h/2 ) + gxH * Kn12
+    Kn13 = (t + h/2) + fxH * Kn12
+    Kn23 = (t + h/2) + gxH * Kn12
 
-    Kn14 = (t + h/2 ) + fx * Kn13
-    Kn24 = (t + h/2 ) + gx * Kn13
+    Kn14 = (t + h/2) + fx * Kn13
+    Kn24 = (t + h/2) + gx * Kn13
 
     xProximo = x - h/6 * (Kn11 + (2 * Kn12) + (2 * Kn13) + Kn14)
     yProximo = y - h/6 * (Kn21 + (2 * Kn22) + (2 * Kn23) + Kn24)
 
     x = xProximo
     y = yProximo
+
     t += h
 
     vetorX.append(x)
