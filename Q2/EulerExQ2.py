@@ -27,8 +27,8 @@ x = 0
 y = 3
 while x <= 3:
 
-    yDeX = math.exp(-x) + 2 * math.exp(-2 * x)
-    y2 = y - h * (y**3)
+    yDeX = math.exp(-x) - 2 * y
+    y2 = y + h * yDeX
     x2 = x + h
     y = y2
     x = x2
