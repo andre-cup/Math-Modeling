@@ -1,33 +1,67 @@
-## Euler explicito segunda questão.
-
-
 import math
 import matplotlib.pyplot as plt
 
-class Questao2():
+h = 0.001
+x = 0
+y = 3
 
-    h = 0.001
-    x = 0
-    y = 3
+vetorAnaliticoX = []
+vetorAnaliticoY = []
+vetorExplicitoX = []
+vetorExplicitoY = []
+vetorRungeKuttaX = []
+vetorRungeKuttaY = []
 
-    def funcExplicita (self):
+#Metodo Analitico
+while x <= 3:
 
+    yAnalitico = math.exp(-x) + 2 * math.exp(-2 * x)
+    x += h
 
-        vetorX = []
-        vetorY = []
+    vetorAnaliticoY.append(yAnalitico)
+    vetorAnaliticoX.append(x)
 
+#Metodo de Euler Explicito
 
-        while x <= 3:
-            yDeX = math.exp(-x) + 2*math.exp(-2*x)
-            y2 = y - self.h * (y**3)
-            x2 = x + self.h
-            y = y2
-            x = x2
+x = 0
+y = 3
+while x <= 3:
 
-            vetorX.append(x)
-            vetorY.append(y)
+    yDeX = math.exp(-x) + 2 * math.exp(-2 * x)
+    y2 = y - h * (y**3)
+    x2 = x + h
+    y = y2
+    x = x2
 
-        plt.plot([vetorX, vetorY],)
-        plt.show()
+    vetorExplicitoX.append(x)
+    vetorExplicitoY.append(y)
 
-    def rungeKutta(self):
+#Metodo de Runge-Kutta
+
+x = 0
+y = 3
+
+while x <= 3:
+
+    fyx = math.exp(-x)
+    fy = - 2 * y
+    yH = math.exp(-x) + (h/2) - 2 * y *(h/2)
+
+    Kn1 = fyx + fy
+    Kn2 = yH * Kn1
+    Kn3 = yH * Kn2
+    Kn4 = fyx + h + fy + (h * Kn3)
+
+    yProximo = y + h/6 * (Kn1 + (2 * Kn2) + (2 * Kn3) + Kn4)
+    x += h
+
+    y = yProximo
+
+    vetorRungeKuttaX.append(x)
+    vetorRungeKuttaY.append(y)
+
+plt.title("Modelagem Matematica - Q2")
+plt.plot(vetorAnaliticoX, vetorAnaliticoY, markersize = 1, color = "blue")
+plt.plot(vetorExplicitoX, vetorExplicitoY,"--",markersize = 1, color = "red")
+plt.plot(vetorRungeKuttaX, vetorRungeKuttaY,"-.",markersize = 1, color = "green")
+plt.show()
