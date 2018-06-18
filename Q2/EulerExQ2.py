@@ -60,7 +60,7 @@ while x <= 3:
     vetorRungeKuttaX.append(x)
     vetorRungeKuttaY.append(y)
 
-plt.title("Modelagem Matematica - Q2")
+plt.title("Grafico - Q2")
 plt.plot(vetorAnaliticoX, vetorAnaliticoY, markersize = 1, color = "blue")
 plt.plot(vetorExplicitoX, vetorExplicitoY,"--",markersize = 1, color = "red")
 plt.plot(vetorRungeKuttaX, vetorRungeKuttaY,"-.",markersize = 1, color = "green")
