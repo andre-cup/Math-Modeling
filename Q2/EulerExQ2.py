@@ -44,7 +44,7 @@ y = 3
 
 while x <= 3:
 
-<<<<<<< HEAD
+
     fx = math.exp(-x)
     fy = - 2 * y
 
@@ -52,7 +52,7 @@ while x <= 3:
     Kn2 = fx + (h/2) + fy + ((h/2) * Kn1)
     Kn3 = fx + (h/2) + fy + ((h/2) * Kn2)
     Kn4 = fx + h + fy + (h * Kn3)
-=======
+
     fx = math.exp(-x) - 2 * y
     yH = math.exp(-x) + (h/2) - 2 * y *(h/2)
 
@@ -60,7 +60,7 @@ while x <= 3:
     Kn2 = yH * Kn1
     Kn3 = yH * Kn2
     Kn4 = fx + h + fx + (h * Kn3)
->>>>>>> 12b65f75888a5a041fdb779d7c002d7fffe4b231
+
 
     yProximo = y + h/6 * (Kn1 + (2 * Kn2) + (2 * Kn3) + Kn4)
     x += h
