@@ -25,6 +25,7 @@ while x <= 3:
 
 x = 0
 y = 3
+
 while x <= 3:
 
     yDeX = math.exp(-x) - 2 * y
@@ -43,14 +44,13 @@ y = 3
 
 while x <= 3:
 
-    fyx = math.exp(-x)
-    fy = - 2 * y
+    fx = math.exp(-x) - 2 * y
     yH = math.exp(-x) + (h/2) - 2 * y *(h/2)
 
-    Kn1 = fyx + fy
+    Kn1 = fx + fx
     Kn2 = yH * Kn1
     Kn3 = yH * Kn2
-    Kn4 = fyx + h + fy + (h * Kn3)
+    Kn4 = fx + h + fx + (h * Kn3)
 
     yProximo = y + h/6 * (Kn1 + (2 * Kn2) + (2 * Kn3) + Kn4)
     x += h

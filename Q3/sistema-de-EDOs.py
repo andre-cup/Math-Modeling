@@ -15,6 +15,7 @@ while t <= 16:
     fx = -0.16 * x + 0.08 * x * y
     gx = 4.5 * x - 0.9 * x * y
 
+
     x2 = x + h * fx
     y2 = y + h * gx
 
