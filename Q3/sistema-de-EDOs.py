@@ -7,39 +7,32 @@ h = 0.001
 
 x = 4
 y = 4
-xg = 4
-yg = 4
-vetorXf = [x]
-vetorYf = [y]
 
-vetorXg = [xg]
-vetorYg = [yg]
+vetorX = [x]
+vetorY = [y]
+
 tN = [t]
 
+fx = -0.16 * x + 0.08 * x * y
+gx = 4.5 * x - 0.9 * x * y
+
+
 while t <= 16:
-    fx = -0.16 * x + 0.08 * x * y
-    gx = 4.5 * x - 0.9 * x * y
 
-    xg2 = xg + h
-    yg2 = yg - h * (y **3)
 
-    xf2 = x + h
-    yf2 = y - h * (yg **3)
+    x2 = x + h * fx
+    y2 = y + h * gx
 
-    x = xf2
-    y = yf2
-    xg = xg2
-    yg = yg2
+    x = x2
+    y = y2
 
     t += h
 
-    vetorXf.append(x)
-    vetorYf.append(y)
-    vetorXg.append(xg)
-    vetorYg.append(yg)
+    vetorX.append(x)
+    vetorY.append(y)
     tN.append(t)
 
-plt.plot(tN, vetorXf, vetorYf, markersize = 1, color = "blue")
-plt.plot(tN, vetorXg, vetorYg,"--", markersize = 1, color = "green")
+plt.plot(tN, vetorX, markersize = 1, color = "blue")
+plt.plot(tN, vetorY,"--", markersize = 1, color = "green")
 
 plt.show()

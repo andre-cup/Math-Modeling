@@ -1,7 +1,4 @@
 #Método de Newton primeira questão.
-
-
-
 import math
 
 x = 0.8

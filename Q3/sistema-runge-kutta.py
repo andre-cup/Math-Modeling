@@ -11,6 +11,7 @@ vetorX = [x]
 tN = [t]
 
 while t <= 16:
+
     fx = -0.16 * x
     fxy = 0.08 * x * y
     gx = 4.5 * x
@@ -20,17 +21,17 @@ while t <= 16:
     gxH = 4.5 * x + (h / 2) - 0.9 * x * y + (h / 2)
 
 
-    Kn11 = t + fx + fxy
-    Kn21 = t + gx + gxy
+    Kn11 = fx + fxy
+    Kn21 = gx + gxy
 
-    Kn12 = (t + h/2) + fxH * Kn11
-    Kn22 = (t + h/2) + gxH * Kn11
+    Kn12 = fxH * Kn11
+    Kn22 = gxH * Kn11
 
-    Kn13 = (t + h/2) + fxH * Kn12
-    Kn23 = (t + h/2) + gxH * Kn12
+    Kn13 = fxH * Kn12
+    Kn23 = gxH * Kn12
 
-    Kn14 = (t + h/2) + fx * Kn13
-    Kn24 = (t + h/2) + gx * Kn13
+    Kn14 = fx * Kn13
+    Kn24 = gx * Kn13
 
     xProximo = x - h/6 * (Kn11 + (2 * Kn12) + (2 * Kn13) + Kn14)
     yProximo = y - h/6 * (Kn21 + (2 * Kn22) + (2 * Kn23) + Kn24)
@@ -45,5 +46,5 @@ while t <= 16:
     tN.append(t)
 
 plt.plot(tN, vetorX, markersize = 1, color = "blue")
-plt.plot(tN, vetorY,"--", markersize = 1, color = "green")
+plt.plot(tN, vetorY,maker = 's', markersize = 1, color = "green")
 plt.show()
