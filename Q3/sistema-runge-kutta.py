@@ -12,20 +12,17 @@ tN = [t]
 
 while t <= 16:
 
-    fx = -0.16 * x
-    fxy = 0.08 * x * y
-    gx = 4.5 * x
-    gxy = - 0.9 * x * y
+    fxH = -0.16 * x + 0.08 * x * y
+    gxH = 4.5 * y - 0.9 * x * y
 
-    fxH = -0.16 * x + (h / 2) + 0.08 * x * y + (h / 2)
-    gxH = 4.5 * x + (h / 2) - 0.9 * x * y + (h / 2)
+    x2 = x + h * fxH
+    y2 = y + h * gxH
 
+    Kn11 = x2
+    Kn21 = y2
 
-    Kn11 = fx + fxy
-    Kn21 = gx + gxy
-
-    Kn12 = fxH * Kn11
-    Kn22 = gxH * Kn11
+    Kn12 = 1/2 * h
+    Kn22 = y2 * Kn11
 
     Kn13 = fxH * Kn12
     Kn23 = gxH * Kn12

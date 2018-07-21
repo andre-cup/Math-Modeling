@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+import drawnow
 
 k = 5000
 m = 2
@@ -13,6 +14,10 @@ alfa = 2
 vetX = [xo]
 vetV = [vo]
 vetT = [to]
+
+
+
+
 def func (to):
     while to <= T:
 
@@ -29,7 +34,10 @@ def func (to):
     print(vetX)
     print(vetV)
 
-    plt.plot(vetT, vetX)
-    plt.plot(vetT, vetV)
-    plt.show()
+    drawnow(vetX, vetV)
+
+    return vetX, vetV
+
+plt.plot(vetX, vetV, marker='s', markersize=35, color='blue')
+plt.show()
 
