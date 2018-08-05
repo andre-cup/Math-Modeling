@@ -1,7 +1,5 @@
 import matplotlib.pyplot as plt
-import drawnow as dr
-import numpy as np
-
+from drawnow import drawnow
 
 k = 5000
 m = 2
@@ -11,7 +9,7 @@ to = 0
 vo = 0
 xo = 2
 T = 1
-alfa = 0.5
+alfa = 1
 N = 24
 
 
@@ -21,20 +19,23 @@ vetT = [to]
 
 
 def make_fig():
+    xo = 0
+    dLinhaX = (xProximo - xo) / N
 
     for k in range (N):
+        xk = xo + k * dLinhaX
+        plt.plot((xk, xk + 0.099), (-0.1, 0.1), color = 'black') #plot mola
+    plt.ylim(-1, 5)
+    plt.xlim(-1, 6)
+    plt.plot((0, 0), (-0.35, 1), color = 'blue') #linha eixo Y
+    plt.plot((0, 6), (-0.35, -0.35), 'k-', color = 'black') #linha eixo X
+    plt.plot(xProximo, 0.08, marker='s', markersize=35, color='red') #bloco
 
-        plt.plot((vProximo, 0), (0, 0), color = 'brown') #plot mola
-    plt.plot((0, 0), (-0.5, 1), color = 'black')
-    plt.plot((0, 6), (-0.3, -0.3), color = 'black')
-    plt.plot(xProximo, 1.5, marker='s', markersize=35, color='red')
-
-    plt.axis((-5, 5, -5, 5))
     plt.grid(True)
+
+    plt.draw()
     plt.show()
 
-
-#def f_explicito(k, m, l, vo, xo, alfa):
 while(to <= T):
 
     vProximo = vo + (h * (-k/m) * (xo-l)-(2 * (alfa/m))*xo)
@@ -49,11 +50,10 @@ while(to <= T):
     vetV.append(vo)
     vetX.append(xo)
 
-    dr(make_fig())
+    drawnow(make_fig())
 
-#f_explicito(k,m,l,vo,xo,alfa)
+fig = plt.figure()
 
 '''plt.plot(vetT, vetX, "o", markersize = 2, color = 'red')
 plt.plot(vetT, vetV, "o", markersize = 2)
-plt.show()
 '''
