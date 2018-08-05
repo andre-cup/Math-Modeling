@@ -1,44 +1,59 @@
 import matplotlib.pyplot as plt
-from drawnow import *
+import drawnow as dr
 import numpy as np
+
 
 k = 5000
 m = 2
 l = 3
-h = 0.00001
+h = 0.0001
 to = 0
 vo = 0
 xo = 2
-T = 0.5
-alfa = 5
+T = 1
+alfa = 0.5
+N = 24
+
 
 vetX = [xo]
 vetV = [vo]
 vetT = [to]
 
-#def make_fig():
 
-#plt.plot(2, 4, marker='s', markersize=35, color='red')
-plt.plot((0.6, 0.8), (1.3, 1.8), )
-plt.axis((0, 10, 0, 10))
-plt.grid(True)
+def make_fig():
+
+    for k in range (N):
+
+        plt.plot((vProximo, 0), (0, 0), color = 'brown') #plot mola
+    plt.plot((0, 0), (-0.5, 1), color = 'black')
+    plt.plot((0, 6), (-0.3, -0.3), color = 'black')
+    plt.plot(xProximo, 1.5, marker='s', markersize=35, color='red')
+
+    plt.axis((-5, 5, -5, 5))
+    plt.grid(True)
+    plt.show()
+
+
+#def f_explicito(k, m, l, vo, xo, alfa):
+while(to <= T):
+
+    vProximo = vo + (h * (-k/m) * (xo-l)-(2 * (alfa/m))*xo)
+    xProximo = xo + (h * vo)
+
+    vo = vProximo
+    xo = xProximo
+
+    to += h
+
+    vetT.append(to)
+    vetV.append(vo)
+    vetX.append(xo)
+
+    dr(make_fig())
+
+#f_explicito(k,m,l,vo,xo,alfa)
+
+'''plt.plot(vetT, vetX, "o", markersize = 2, color = 'red')
+plt.plot(vetT, vetV, "o", markersize = 2)
 plt.show()
-
-
-'''def f_explicito(k, m, l, vo, xo, alfa):
-
-    while(to <= T):
-
-        vProximo = vo + (h * (-k/m) * (xo-l)-(alfa/m)*xo)
-        xProximo = xo + (h * vo)
-
-        vo = vProximo
-        xo = xProximo
-
-
-
-#plt.plot(0, 5, marker='s', markersize=35, color='blue')
-#plt.show()
-
-#def range_kutta():
 '''
